@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function scareMe() {
+                if (document.getElementById("money-input").value === "") {
+                    const scaredArea = document.getElementById("scared-area");
+                    scaredArea.innerHTML = "Enter a value first!";
+                    return;
+                }
+                let moneyAmount = parseFloat(
+                    document.getElementById("money-input").value
+                );
+                spRate = 1.102;
+                let tenYears = moneyAmount * 1.102 ** 10;
+                let twentyYears = moneyAmount * 1.102 ** 20;
+                let thirtyYears = moneyAmount * 1.102 ** 30;
+                let fortyYears = moneyAmount * 1.102 ** 40;
+                const scaredArea = document.getElementById("scared-area");
+                scaredArea.innerHTML = `
+                <div style="display: flex; flex-direction: column; gap: 0.5rem; justify-content:center; align-items:center; margin-left: 0.5rem">
+                    <div>If you invest it instead, it will grow to...</div>
+                    <div>$${tenYears.toFixed(2)} after 10 years</div>
+                    <div>$${twentyYears.toFixed(2)} after 20 years</div>
+                    <div>$${thirtyYears.toFixed(2)} after 30 years</div>
+                    <div>$${fortyYears.toFixed(2)} after 40 years</div>
+                </div>
+                `;
+            }
+        </script>
+        <style>
+            body {
+                font-family: helvetica, arial, sans-serif;
+                font-weight: 600;
+                font-size: 18px;
+            }
+            .button-74 {
+                background-color: #fbeee0;
+                border: 2px solid #422800;
+                border-radius: 30px;
+                box-shadow: #422800 4px 4px 0 0;
+                color: #422800;
+                cursor: pointer;
+                display: inline-block;
+                padding: 0 18px;
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 50px;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+            }
+
+            .button-74:hover {
+                background-color: #fff;
+            }
+
+            .button-74:active {
+                box-shadow: #422800 2px 2px 0 0;
+                transform: translate(2px, 2px);
+            }
+
+            @media (min-width: 768px) {
+                .button-74 {
+                    min-width: 120px;
+                    padding: 0 25px;
+                }
+            }
+
+            input {
+                border: 0.3rem solid black;
+                padding: 0.5rem;
+                font-size: 1rem;
+                border-radius: 500000rem;
+            }
+            input:focus {
+                outline: none;
+                border: 0.3rem solid #fbeee0;
+                transition: 0.2s;
+            }
+        </style>
+    </head>
+    <body>
+        <div
+            style="
+                width: 90vw;
+                min-height: 90vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 3rem;
+                flex-direction: column;
+            "
+        >
+            How much are you about to spend?
+            <div
+                style="
+                    display: flex;
+                    align-items: center;
+
+                    gap: 0.3rem;
+                "
+            >
+                <div>$</div>
+                <input id="money-input" type="text" placeholder="19.99" />
+            </div>
+            <button class="button-74" onclick="scareMe()">Scare me</button>
+            <div id="scared-area"></div>
+        </div>
+    </body>
+</html>
